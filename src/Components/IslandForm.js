@@ -1,12 +1,27 @@
 import { useState, useTransition } from "react";
 
-export default function IslandForm({ island }) {
+export default function IslandForm({ island, counter, setCounter }) {
   const [use, setUse] = useState("");
   const [phonenum, setPhonenum] = useState("");
   function BookAlret() {
     alert(
       `Are you sure you want to book to: ${island.name} with the name:${use} Phone: ${phonenum}`
     );
+
+    const newIsland = counter.map((x) => {
+      if (x.id == island.id) {
+        x.visitors += 1;
+        if (x.names) {
+          x.names.push(use);
+          x.phones.push(phonenum);
+        } else {
+          x.names = [use];
+          x.phones = [phonenum];
+        }
+      }
+      return x;
+    });
+    setCounter(newIsland);
   }
   function useName(x) {
     setUse(x.target.value);
