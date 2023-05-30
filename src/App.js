@@ -6,6 +6,7 @@ import IslandList from "./Components/IslandList";
 import islands from "./data/islands";
 
 function App() {
+  //
   let island_ = {
     name: "Boubyan",
     img: "http://photos.wikimapia.org/p/00/02/20/48/92_big.jpg",
